@@ -12,7 +12,7 @@ alias pull="git pull -p --rebase"
 alias push="git push"
 alias amend="git commit --amend"
 alias be="bundle exec"
-alias push_branch="push origin (git rev-parse --abbrev-ref HEAD)"
+alias push_branch="push origin $(git rev-parse --abbrev-ref HEAD)"
 alias compile_sorbet="./bazel build //main:sorbet --config=dbg"
 
 whitequark() {
