@@ -1,4 +1,4 @@
-EDITOR=vim
+export EDITOR=vim
 
 alias brails="./bin/rails"
 alias brake="./bin/rake"
