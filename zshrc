@@ -15,6 +15,9 @@ alias be="bundle exec"
 alias push_branch="push origin $(git rev-parse --abbrev-ref HEAD)"
 alias compile_sorbet="./bazel build //main:sorbet --config=dbg"
 
+alias l="ls"
+alias ll="ls -l"
+
 whitequark() {
   ruby -e "require 'parser/current'; puts Parser::CurrentRuby.parse('$@')"
 }
