@@ -23,6 +23,8 @@ set number relativenumber
 set ruler
 set cursorline
 
+colorscheme lapis
+
 autocmd BufWritePre *.rb :%s/\s\+$//e
 
 let &t_SI = "\e[6 q"

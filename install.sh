@@ -16,4 +16,6 @@ if [ $SPIN ]; then
     ln -sf ~/dotfiles/zshrc ~/.zshrc
     ln -sf ~/dotfiles/vimrc ~/.vimrc
     ln -sf ~/dotfiles/gemrc ~/.gemrc
+    mkdir -p ~/.vim/colors
+    ln -sf ~/dotfiles/lapis.vim ~/.vim/colors/lapis.vim
 fi
