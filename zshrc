@@ -37,7 +37,7 @@ sorbet_test() {
 }
 
 comp_run() {
-  compile_sorbet && sorbet_run $@
+  compile_sorbet && bazel-bin/main/sorbet $@ --silence-dev-message
 }
 
 main_and_delete() {
