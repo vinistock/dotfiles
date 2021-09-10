@@ -1,5 +1,7 @@
 export EDITOR=vim
 
+source /etc/zsh/zshrc.default.inc.zsh
+
 alias brails="./bin/rails"
 alias brake="./bin/rake"
 alias byarn="./bin/yarn"
