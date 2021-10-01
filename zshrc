@@ -25,7 +25,7 @@ whitequark() {
 }
 
 bazel_test_find() {
-  ./bazel query 'tests(//...)' | grep $@ | xargs ./bazel test --config=dbg
+  ./bazel query 'tests(//...)' | grep $@ | xargs ./bazel test --config=dbg --test_output=errors
 }
 
 git_find() {
