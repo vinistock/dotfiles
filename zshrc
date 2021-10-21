@@ -1,5 +1,15 @@
 export EDITOR=vim
 
+if [[ "${PATH}" != *bazel_binaries* ]]; then
+  bazel_versions=(${(ps:\n:)"$(ls --color=never ~/.bazel_binaries)"})
+
+  if [[ "${${bazel_versions[-1]}: -1}" == "/" ]]; then
+    export PATH=$PATH:$HOME/.bazel_binaries/${bazel_versions[-1]}bin_t
+  else
+    export PATH=$PATH:$HOME/.bazel_binaries/${bazel_versions[-1]}/bin_t
+  fi
+fi
+
 source /etc/zsh/zshrc.default.inc.zsh
 
 alias brails="./bin/rails"
@@ -15,10 +25,12 @@ alias push="git push"
 alias amend="git commit --amend"
 alias be="bundle exec"
 alias push_branch="push origin $(git rev-parse --abbrev-ref HEAD)"
-alias compile_sorbet="./bazel build //main:sorbet --config=dbg"
 alias l="ls"
 alias ll="ls -l"
 alias reload="source ~/.zshrc"
+alias compile_sorbet="./bazel build //main:sorbet --config=dbg"
+alias compile_sorbet_release="./bazel build //main:sorbet --config=release-linux"
+alias setup_sorbet="compile_sorbet && reload && ./tools/scripts/build_compilation_db.sh"
 
 whitequark() {
   ruby -e "require 'parser/current'; puts Parser::CurrentRuby.parse('$@')"
