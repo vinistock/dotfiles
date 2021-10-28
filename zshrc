@@ -1,13 +1,9 @@
 export EDITOR=vim
 
 if [[ "${PATH}" != *bazel_binaries* ]]; then
-  bazel_versions=(${(ps:\n:)"$(ls --color=never ~/.bazel_binaries)"})
+  bazel_binary_folder=$(find ~/.bazel_binaries/ -maxdepth 2 -type d -name bin_t | sort | tail -1)
 
-  if [[ "${${bazel_versions[-1]}: -1}" == "/" ]]; then
-    export PATH=$PATH:$HOME/.bazel_binaries/${bazel_versions[-1]}bin_t
-  else
-    export PATH=$PATH:$HOME/.bazel_binaries/${bazel_versions[-1]}/bin_t
-  fi
+  export PATH=$PATH:${bazel_binary_folder}
 fi
 
 source /etc/zsh/zshrc.default.inc.zsh
