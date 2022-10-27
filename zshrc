@@ -1,25 +1,12 @@
 export EDITOR=vim
 
-if [[ "${PATH}" != *bazel_binaries* ]]; then
-  bazel_binary_folder=$(find ~/.bazel_binaries/ -maxdepth 2 -type d -name bin_t | sort | tail -1)
-
-  export PATH=$PATH:${bazel_binary_folder}
-fi
-
 source /etc/zsh/zshrc.default.inc.zsh
-
-alias brails="./bin/rails"
-alias brake="./bin/rake"
-alias byarn="./bin/yarn"
-alias bspoom="./bin/spoom"
-alias btapioca="./bin/tapioca"
 
 alias gitl="git log --oneline --no-decorate"
 alias gits="git show --name-status"
 alias pull="git pull -p --rebase"
 alias push="git push"
 alias amend="git commit --amend"
-alias be="bundle exec"
 alias push_branch="push origin $(git rev-parse --abbrev-ref HEAD)"
 alias l="ls"
 alias ll="ls -l"
@@ -59,4 +46,12 @@ main_and_delete() {
     fi
 
     git branch -D $current_branch
+}
+
+b() {
+  if [[ -e "./bin/$1" ]]; then
+    ./bin/$1 ${@:2}
+  else
+    bundle exec $@
+  fi
 }
